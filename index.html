@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Gallary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="centered-heading">MY RUIA Gallery</h1>
+    <section>
+        <ul>
+            <li class="list active" data-filter="all">All</li>
+            <li class="list" data-filter="evnt-1">Event-1</li>
+            <li class="list" data-filter="evnt-2">Event-2</li>
+            <li class="list" data-filter="evnt-3">Event-3</li>
+            <li class="list" data-filter="evnt-4">Event-4</li>
+            <li class="list" data-filter="evnt-5">Event-5</li>
+        </ul>
+        <div class="product">
+            <div class="itemBox" data-item="evnt-1"><img src="https://images.pexels.com/photos/4226881/pexels-photo-4226881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-2"><img src="https://images.pexels.com/photos/4226873/pexels-photo-4226873.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-3"><img src="https://images.pexels.com/photos/4397786/pexels-photo-4397786.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-4"><img src="https://images.pexels.com/photos/5368648/pexels-photo-5368648.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-5"><img src="https://images.pexels.com/photos/4389673/pexels-photo-4389673.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+
+            <div class="itemBox" data-item="evnt-1"><img src="https://images.pexels.com/photos/4397810/pexels-photo-4397810.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+            <div class="itemBox" data-item="evnt-2"><img src="https://images.pexels.com/photos/4505120/pexels-photo-4505120.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+            <div class="itemBox" data-item="evnt-3"><img src="https://images.pexels.com/photos/7078034/pexels-photo-7078034.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-4"><img src="https://images.pexels.com/photos/8004250/pexels-photo-8004250.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-5"><img src="https://images.pexels.com/photos/4226883/pexels-photo-4226883.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+
+            <div class="itemBox" data-item="evnt-1"><img src="https://images.pexels.com/photos/4495936/pexels-photo-4495936.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+            <div class="itemBox" data-item="evnt-2"><img src="https://images.pexels.com/photos/4397811/pexels-photo-4397811.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-3"><img src="https://images.pexels.com/photos/3846010/pexels-photo-3846010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-4"><img src="https://images.pexels.com/photos/7256252/pexels-photo-7256252.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+            <div class="itemBox" data-item="evnt-5"><img src="https://images.pexels.com/photos/5728306/pexels-photo-5728306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            
+            <div class="itemBox" data-item="evnt-1"><img src="https://images.pexels.com/photos/8120828/pexels-photo-8120828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-2"><img src="https://images.pexels.com/photos/4226882/pexels-photo-4226882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-3"><img src="https://images.pexels.com/photos/4397809/pexels-photo-4397809.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-4"><img src="https://images.pexels.com/photos/5727918/pexels-photo-5727918.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+            <div class="itemBox" data-item="evnt-5"><img src="https://images.pexels.com/photos/4089658/pexels-photo-4089658.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></div>
+        </div>
+    </section>
+
+    <!-- ---------Logic-section------------ -->
+     <script>
+        let list = document.querySelectorAll('.list');
+        let itemBox = document.querySelectorAll('.itemBox');
+
+        for(let i=0; i<list.length; i++){
+            list[i].addEventListener('click',function(){
+                for(let j=0; j<list.length; j++){
+                    list[j].classList.remove('active');
+                }
+                this.classList.add('active');
+
+                let dataFilter = this.getAttribute('data-filter');
+
+                for(let k=0; k<itemBox.length; k++){
+                    itemBox[k].classList.remove('active');
+                    itemBox[k].classList.add('hide');
+
+                    if(itemBox[k].getAttribute('data-item') == dataFilter || dataFilter == "all"){
+                        itemBox[k].classList.remove('hide');
+                        itemBox[k].classList.add('active');
+                    }
+                }
+            })
+        }
+     </script>
+</body>
+</html>
